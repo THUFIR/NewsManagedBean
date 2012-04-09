@@ -1,12 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="./foo.xhtml">
+                template="./foo.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="top">
         top
-    </ui:define>
-    <ui:define name="content">
-        #{foo.bar}
+    </ui:define>    <ui:define name="content">
+        <h:dataTable value="#{messages.model}" var="m">
+            <h:column>
+                <f:facet name="id">
+                    <h:outputText value="id" />
+                </f:facet>
+                <h:outputLink id="hmmm" value="detail.xhtml">
+                    <f:param name="id" value="#{m.getMessageNumber()}" />
+                    <h:outputText value="#{m.getMessageNumber()}" />
+                </h:outputLink>
+            </h:column>
+            <h:column>
+                <f:facet name="subject">
+                    <h:outputText value="subject" />
+                </f:facet>
+                <h:outputText value="#{m.subject}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="content">
+                    <h:outputText value="content" />
+                </f:facet>
+                <h:outputText value="#{m.sentDate}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="date">
+                    <h:outputText value="date" />
+                </f:facet>
+                <h:outputLink value="#{messages.getUrl(m)}">#{messages.getUrl(m)}</h:outputLink>
+            </h:column>
+        </h:dataTable>
     </ui:define>
 </ui:composition>

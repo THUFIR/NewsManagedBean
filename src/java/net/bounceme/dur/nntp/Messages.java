@@ -7,16 +7,13 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Named;
 import javax.mail.Header;
-import javax.mail.Message;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class Messages implements Serializable {
 
